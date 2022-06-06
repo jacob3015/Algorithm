@@ -4,13 +4,8 @@
 
 using namespace std;
 
-int main() {
-    
-    // 입력 vector
-    vector<int> progresses;
-    vector<int> speeds;
+vector<int> solution(vector<int> progresses, vector<int> speeds) {
 
-    // 결과 vector
     vector<int> answer;
 
     queue<int> time;
@@ -42,5 +37,5 @@ int main() {
         answer.push_back(num);
     }
 
-    return 0;
+    return answer;
 }
