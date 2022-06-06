@@ -4,9 +4,6 @@
 
 using namespace std;
 
-/**
- * 풀리긴 풀리는데 몇몇 테스트 케이스에서 시간 초과 나옴.
- */
 int main() {
     
     // 입력 vector
