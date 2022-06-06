@@ -1,41 +1,27 @@
 #include <iostream>
-#include <algorithm>
 #include <vector>
+#include <stack>
 
 using namespace std;
 
-int main()
-{
-    // 입력 vector
-    vector<int> prices {1, 2, 3, 2, 3};
+vector<int> solution(vector<int> prices) {
 
-    // 결과 vector
-    vector<int> answer;
+    vector<int> answer(prices.size());
+    stack<int> sta;
+    int size = prices.size();
 
-    // 입력 vector의 index를 저장하는 index vector 초기화
-    vector<int> index;
-    for(int i = prices.size()-1; i > -1; i--) {
-        index.push_back(i);
-    }
-
-    // index vector의 front와 back을 iterator처럼 사용해 결과 값 도출
-    while(!index.empty()) {
-        int start = index.back();
-        for(int end = start; end <= index.front(); end++) {
-            if(prices[start] > prices[end] || end == index.front()) {
-                answer.push_back(end - start);
-                break;
-            }
+    for(int i=0;i<size;i++){
+        while(!sta.empty()&&prices[sta.top()]>prices[i]){
+            answer[sta.top()] = i-sta.top();
+            sta.pop();
         }
-        index.pop_back();
+        sta.push(i);
     }
 
-    // 결과 vector 출력
-    for(int i : answer) {
-        cout << i << " ";
+    while(!sta.empty()){
+        answer[sta.top()] = size-sta.top()-1;
+        sta.pop();
     }
-    cout << endl;
-
-
-    return 0;
+    
+    return answer;
 }
