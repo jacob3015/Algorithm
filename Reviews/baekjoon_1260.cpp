@@ -46,6 +46,7 @@ vector<int> bfs(vector<vector<int>> graph, int start) {
 
     while(!que.empty()) {
         int now = que.front();
+        que.pop();
         for(int i = 0; i < graph[now].size(); i++) {
             int next = graph[now][i];
             if(!visited[next]) {
@@ -54,7 +55,6 @@ vector<int> bfs(vector<vector<int>> graph, int start) {
                 result.push_back(next);
             }
         }
-        que.pop();
     }
 
     return result;
